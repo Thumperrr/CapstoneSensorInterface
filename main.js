@@ -5,15 +5,17 @@ const {app, BrowserWindow} = require('electron')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
+
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 800, height: 600, webPreferences:{ zoomFactor: 0.8 }})
+  mainWindow.webContents.session.clearStorageData()
 
   // and load the index.html of the app.
   //mainWindow.loadFile('index.html')
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/index-dev.html');
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -45,6 +47,31 @@ app.on('activate', function () {
     createWindow()
   }
 })
+
+var net = require('net')
+var client = new net.Socket();
+
+try {
+    client.connect(13370, '127.0.0.1', function() {
+        console.log('Connected');
+        client.write('Hello, server! Love, Client.');
+    });
+}
+catch(err) {
+    console.log("Error connecting");
+}
+client.on('data', function(data) {
+    console.log('Received: ' + data);
+    client.destroy();
+});
+
+client.on('close', function() {
+    console.log('Connection Closed');
+});
+
+client.on('error', function(exception) {
+    console.log("Exception: " + exception);
+});
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
