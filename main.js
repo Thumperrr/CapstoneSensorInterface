@@ -13,9 +13,9 @@ function createWindow () {
 
   // and load the index.html of the app.
   //mainWindow.loadFile('index.html')
-  mainWindow.loadURL('file://' + __dirname + '/index-dev.html');
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -48,30 +48,10 @@ app.on('activate', function () {
   }
 })
 
-var net = require('net')
-var client = new net.Socket();
-
-try {
-    client.connect(13370, '127.0.0.1', function() {
-        console.log('Connected');
-        client.write('Hello, server! Love, Client.');
-    });
-}
-catch(err) {
-    console.log("Error connecting");
-}
-client.on('data', function(data) {
-    console.log('Received: ' + data);
-    client.destroy();
-});
-
-client.on('close', function() {
-    console.log('Connection Closed');
-});
-
-client.on('error', function(exception) {
-    console.log("Exception: " + exception);
-});
-
+// var Foo = require('./ESPConnection.js');
+// Foo.onData(function(data) {
+//     console.log(data['millis']);
+// });
+// Foo.connect('143.215.109.72', 80);
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

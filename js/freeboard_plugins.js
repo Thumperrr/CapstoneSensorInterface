@@ -4102,7 +4102,7 @@ freeboard.loadDatasourcePlugin({
         type_name: "gauge",
         display_name: "Gauge",
         "external_scripts" : [
-            "plugins/thirdparty/raphael.2.1.0.min.js",
+            "plugins/thirdparty/raphael.2.2.0.min.js",
             "plugins/thirdparty/justgage.1.0.1.js"
         ],
         settings: [
@@ -4304,7 +4304,7 @@ freeboard.loadDatasourcePlugin({
         type_name: "pointer",
         display_name: "Pointer",
         "external_scripts" : [
-            "plugins/thirdparty/raphael.2.1.0.min.js"
+            "plugins/thirdparty/raphael.2.2.0.min.js"
         ],
         settings: [
             {
