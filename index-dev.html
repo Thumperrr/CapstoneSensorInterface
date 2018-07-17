@@ -39,6 +39,8 @@
                 "plugins/freeboard/freeboard.widgets.js",
                 "examples/plugin_example.js",
                 "ESPJsonDataSource.js",
+                "FileSaveWidget.js",
+                "ESPInterfaceWidget.js",
 
                 // *** Load more plugins here ***
                 function(){
@@ -46,6 +48,8 @@
                     { //DOM Ready
 						freeboard.setAssetRoot("/freeboard-ui/");
                         freeboard.initialize(true);
+                        freeboard.loadDashboard(require('./dashboard-dev.json'))
+                        freeboard.showLoadingIndicator(true);
                     });
                 });
     </script>

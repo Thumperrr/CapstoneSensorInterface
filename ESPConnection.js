@@ -7,25 +7,33 @@ var port = 80;
 var reconnectTimer = null;
 var dataCallback = function() {};
 
+var f = freeboard;
+
 var chunk = '';
 
+client.on('connect', function() {
+    console.log('Connected to ' + ip + ":" + port);
+    f.showLoadingIndicator(false);
+    if(reconnectTimer) {
+        clearInterval(reconnectTimer);
+        reconnectTimer = null;
+    }
+});
+
 var connect = function() {
-    client.connect(port, ip, function() {
-        console.log('Connected to ' + ip + ":" + port);
-        if(reconnectTimer) {
-            clearInterval(reconnectTimer);
-            reconnectTimer = null;
-        }
-    });
+    f.showLoadingIndicator(true);
+    console.log('Attempting to connect...');
+    client.connect(port, ip);
 }
 
-var reconnect = function() {
+/*var reconnect = function() {
     if(!reconnectTimer) {
+        console.log('creating connection timer');
         reconnectTimer = setInterval(function() {
             connect();
         }, 5000);
     }
-}
+}*/
 
 client.on('data', function(data) {
     //dataCallback(data);
@@ -34,7 +42,7 @@ client.on('data', function(data) {
     while (d_index > -1) {
         try {
             string = chunk.substring(0,d_index); // Create string up until the delimiter
-            console.log("Received: " + string);
+            //console.log("Received: " + string);
             json = JSON.parse(string); // Parse the current string
             dataCallback(json); // Function that does something with the current chunk of valid json.
         } catch(e) {}
@@ -45,12 +53,17 @@ client.on('data', function(data) {
 
 client.on('close', function() {
     console.log("Connection closed");
-    reconnect();
+    // reconnect();
+    f.showLoadingIndicator(true)
+    client.setTimeout(2500, function() {
+        console.log('Attempting connection');
+        client.connect(port, ip);
+    })
 });
 
 client.on('error', function(err) {
     console.log(err);
-    reconnect();
+    client.destroy();
 });
 
 module.exports = {
@@ -64,7 +77,7 @@ module.exports = {
         dataCallback = callback
     },
 
-    emit: function(jsonData) {
-
+    send: function(jsonData) {
+        client.write(jsonData);
     }
 };

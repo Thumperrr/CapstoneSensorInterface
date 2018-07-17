@@ -8,14 +8,14 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600, webPreferences:{ zoomFactor: 0.8 }})
+  mainWindow = new BrowserWindow({width: 1100, height: 750, webPreferences:{ zoomFactor: 0.8 }})
   mainWindow.webContents.session.clearStorageData()
 
   // and load the index.html of the app.
   //mainWindow.loadFile('index.html')
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/index-dev.html');
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

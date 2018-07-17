@@ -4,13 +4,15 @@
 		var self = this;
 		var conn = require('./ESPConnection.js');
 
+		var currentSettings = settings;
+
 		conn.onData(updateCallback);
 		conn.connect(settings.ip_address, settings.port);
 
 		this.onSettingsChanged = function (newSettings)  {
 			console.log('settings changed');
-			conn.end();
-			conn.connect(newSettings.ip_address, newSettings.port);
+			this.currentSettings = newSettings;
+//			conn.connect(newSettings.ip_address, newSettings.port);
 		}
 
 		this.onDispose = function() {
@@ -18,7 +20,6 @@
 		}
 
 		this.updateNow = function() {
-
 		}
 	}
 
