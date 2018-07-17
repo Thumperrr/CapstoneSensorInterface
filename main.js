@@ -8,12 +8,12 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1100, height: 750, webPreferences:{ zoomFactor: 0.8 }})
+  mainWindow = new BrowserWindow({width: 1100, height: 650, webPreferences:{ zoomFactor: 0.8 }})
   mainWindow.webContents.session.clearStorageData()
 
   // and load the index.html of the app.
   //mainWindow.loadFile('index.html')
-  mainWindow.loadURL('file://' + __dirname + '/index-dev.html');
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 

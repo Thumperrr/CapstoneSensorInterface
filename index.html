@@ -12,6 +12,8 @@
     <script type="text/javascript">
         head.js("js/freeboard_plugins.min.js",
                 "ESPJsonDataSource.js",
+                "FileSaveWidget.js",
+                "ESPInterfaceWidget.js",
                 // *** Load more plugins here ***
                 function(){
                     $(function()
@@ -22,6 +24,7 @@
                                 freeboard.setEditing(false);
                             });
                         });
+                        freeboard.showLoadingIndicator(true);
                         /*
                         var hashpattern = window.location.hash.match(/(&|#)source=([^&]+)/);
                         if (hashpattern !== null) {

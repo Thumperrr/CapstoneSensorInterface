@@ -6,54 +6,14 @@
 		{
 			"width": 1,
 			"row": {
-				"2": 1,
-				"3": 1
+				"1": 21,
+				"3": 1,
+				"4": 16
 			},
 			"col": {
-				"2": 1,
-				"3": 1
-			},
-			"col_width": 1,
-			"widgets": [
-				{
-					"type": "gauge",
-					"settings": {
-						"title": "Temp Sensor 1",
-						"value": "datasources[\"a\"][\"Temp1\"]",
-						"units": "C",
-						"min_value": "-1",
-						"max_value": "1"
-					}
-				},
-				{
-					"type": "gauge",
-					"settings": {
-						"title": "Temp Sensor 2",
-						"value": "datasources[\"a\"][\"Temp2\"]",
-						"units": "c",
-						"min_value": "-1",
-						"max_value": "1"
-					}
-				},
-				{
-					"type": "gauge",
-					"settings": {
-						"title": "Temp Sensor 3",
-						"value": "datasources[\"a\"][\"Temp3\"]",
-						"units": "C",
-						"min_value": "-1",
-						"max_value": "1"
-					}
-				}
-			]
-		},
-		{
-			"width": 1,
-			"row": {
-				"3": 1
-			},
-			"col": {
-				"3": 2
+				"1": 1,
+				"3": 2,
+				"4": 2
 			},
 			"col_width": 1,
 			"widgets": [
@@ -72,10 +32,14 @@
 		{
 			"width": 1,
 			"row": {
-				"3": 1
+				"1": 29,
+				"3": 1,
+				"4": 16
 			},
 			"col": {
-				"3": 3
+				"1": 1,
+				"3": 3,
+				"4": 3
 			},
 			"col_width": 1,
 			"widgets": [
@@ -92,15 +56,91 @@
 			]
 		},
 		{
+			"width": 1,
+			"row": {
+				"3": 1,
+				"4": 8
+			},
+			"col": {
+				"3": 3,
+				"4": 4
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "Temp Sensor 3",
+						"value": "datasources[\"a\"][\"Temp3\"]",
+						"units": "C",
+						"min_value": "-1",
+						"max_value": "1"
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 8,
+				"4": 8
+			},
+			"col": {
+				"3": 3,
+				"4": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "Temp Sensor 2",
+						"value": "datasources[\"a\"][\"Temp2\"]",
+						"units": "C",
+						"min_value": "-1",
+						"max_value": "1"
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 8,
+				"4": 8
+			},
+			"col": {
+				"3": 2,
+				"4": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "Temp Sensor 1",
+						"value": "datasources[\"a\"][\"Temp1\"]",
+						"units": "C",
+						"min_value": "-1",
+						"max_value": "1"
+					}
+				}
+			]
+		},
+		{
 			"title": "Temperature History",
 			"width": 1,
 			"row": {
-				"3": 9
+				"1": 37,
+				"3": 9,
+				"4": 1
 			},
 			"col": {
-				"3": 2
+				"1": 1,
+				"3": 2,
+				"4": 2
 			},
-			"col_width": 2,
+			"col_width": 3,
 			"widgets": [
 				{
 					"type": "sparkline",
@@ -117,6 +157,127 @@
 					}
 				}
 			]
+		},
+		{
+			"title": "File Logging",
+			"width": 1,
+			"row": {
+				"1": 44,
+				"3": 16,
+				"4": 22,
+				"5": 20
+			},
+			"col": {
+				"1": 1,
+				"3": 3,
+				"4": 1,
+				"5": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "fs_widget",
+					"settings": {
+						"values": [
+							"Date.now()",
+							"datasources[\"a\"][\"Temp1\"]",
+							"datasources[\"a\"][\"Temp2\"]",
+							"datasources[\"a\"][\"Temp3\"]",
+							"datasources[\"a\"][\"Temp4\"]",
+							"datasources[\"a\"][\"Temp5\"]"
+						]
+					}
+				}
+			]
+		},
+		{
+			"title": "Parameter Control",
+			"width": 1,
+			"row": {
+				"1": 48,
+				"3": 20,
+				"4": 13,
+				"5": 11
+			},
+			"col": {
+				"1": 1,
+				"3": 3,
+				"4": 1,
+				"5": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "espinterface_widget",
+					"settings": {}
+				}
+			]
+		},
+		{
+			"title": "Current Device Parameters",
+			"width": 1,
+			"row": {
+				"3": 21,
+				"4": 1,
+				"5": 1
+			},
+			"col": {
+				"3": -8,
+				"4": 1,
+				"5": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Motor On Time",
+						"size": "regular",
+						"value": "datasources[\"a\"][\"ontime\"]",
+						"animate": true,
+						"units": "s"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Motor Off Time",
+						"size": "regular",
+						"value": "datasources[\"a\"][\"offtime\"]",
+						"animate": true,
+						"units": "s"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Motor Speed Setting (-100% to 100%)",
+						"size": "regular",
+						"value": "datasources[\"a\"][\"speed\"]",
+						"animate": true,
+						"units": "%"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Data Update Period",
+						"size": "regular",
+						"value": "datasources[\"a\"][\"poll_period\"]",
+						"animate": true,
+						"units": "ms"
+					}
+				},
+				{
+					"type": "indicator",
+					"settings": {
+						"title": "Motor Power",
+						"value": "datasources[\"a\"][\"motor_on\"]",
+						"on_text": "\"On, time remaining: \" + Math.round(datasources[\"a\"][\"motor_switchtime\"]/1000) + \" s\";",
+						"off_text": "\"Off, time remaining: \" + Math.round(datasources[\"a\"][\"motor_switchtime\"]/1000) + \" s\";"
+					}
+				}
+			]
 		}
 	],
 	"datasources": [
@@ -124,10 +285,10 @@
 			"name": "a",
 			"type": "espjsondata",
 			"settings": {
-				"ip_address": "143.215.109.72",
+				"ip_address": "192.168.0.107",
 				"port": "80"
 			}
 		}
 	],
-	"columns": 3
+	"columns": 4
 }
